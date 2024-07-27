@@ -6,6 +6,7 @@ import "../styles/QuoteBox.css";
 const QuoteBox = () => {
   const [text, settext] = useState("");
   const [author, setAuthor] = useState("");
+  const [isLoading, setIsLoading] = useState(false);
 
   const handleNewQuote = async () => {
     try {
@@ -37,8 +38,8 @@ const QuoteBox = () => {
         <a id="tweet-quote" href={tweetUrl} target="_blank">
           <FaTwitter size={30} />
         </a>
-        <button id="new-quote" onClick={handleNewQuote}>
-          New Quote
+        <button id="new-quote" onClick={handleNewQuote} disabled={isLoading}>
+          {isLoading ? "Loading..." : "New Quote"}
         </button>
       </div>
     </div>
